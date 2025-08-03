@@ -3,6 +3,16 @@
 <?php include("../../layout/topbar.php"); ?>
 <?php include("../../layout/sidebar.php"); ?>
 
+<?php if (isset($_SESSION['alert'])): ?>
+  <div class="col-md-12">
+    <div class="alert alert-<?= $_SESSION['alert']['type'] ?>">
+      <?= $_SESSION['alert']['message'] ?>
+      <button class="close-alert" onclick="this.parentElement.style.display='none'">&times;</button>
+    </div>
+  </div>
+  <?php unset($_SESSION['alert']); ?>
+<?php endif; ?>
+
 <div class="tabs" role="tablist">
   <div class="tab active" data-tab="dosen" role="tab" tabindex="0" aria-selected="true" aria-controls="dosen-content" id="tab-dosen" title="Data Dosen">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

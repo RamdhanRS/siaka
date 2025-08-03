@@ -20,12 +20,24 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       // Redirect berdasarkan role
       switch ($user['role']) {
         case 'admin':
+          $_SESSION['alert'] = [
+            'type' => 'success',
+            'message' => 'Selamat datang, ' . ucwords($_SESSION["username"]) . '!'
+          ];
           header('Location: ' . base_url("/page/dashboard/dashboard_admin.php"));
           break;
         case 'dosen':
+          $_SESSION['alert'] = [
+            'type' => 'success',
+            'message' => 'Selamat datang, ' . ucwords($_SESSION["username"]) . '!'
+          ];
           header('Location: ' . base_url("/page/dashboard/dashboard_dosen.php"));
           break;
         case 'mahasiswa':
+          $_SESSION['alert'] = [
+            'type' => 'success',
+            'message' => 'Selamat datang, ' . ucwords($_SESSION["username"]) . '!'
+          ];
           header('Location: ' . base_url("/page/dashboard/dashboard_mahasiswa.php"));
           break;
         default:

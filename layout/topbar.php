@@ -11,10 +11,10 @@
   </div>
 
   <div class="topbar-right" id="profileArea" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-label="Profile menu">
-    <span>Dasha Taran</span>
+    <span style="text-transform: capitalize;"><?= $_SESSION["username"] ?></span>
     <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile" />
     <div class="profile-dropdown" id="profileDropdown" role="menu" aria-hidden="true">
-      <div class="profile-name">Dasha Taran</div>
+      <div style="text-transform: capitalize;" class="profile-name"><?= $_SESSION["username"] ?></div>
       <a href="<?= base_url("/action/login/logout.php"); ?>" class="btn btn-danger" role="menuitem" onclick="return confirm('Apakah Anda yakin ingin logout?')">Logout</a>
       <!-- <button id="logoutBtn" role="menuitem">Logout</button> -->
     </div>
