@@ -44,7 +44,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         <a href="<?= base_url('/page/matakuliah/data_mata_kuliah.php') ?>">Kelola Mata Kuliah</a>
       </li>
       <li class="menu-item <?= strpos($currentPage, 'jadwal') !== false ? 'active' : '' ?>">
-        <a href="<?= base_url('/page/jadwal.php') ?>">Kelola Jadwal Perkuliahan</a>
+        <a href="<?= base_url('/page/jadwal/data_jadwal.php') ?>">Kelola Jadwal Perkuliahan</a>
       </li>
       <li class="menu-item <?= strpos($currentPage, 'krs') !== false ? 'active' : '' ?>">
         <a href="<?= base_url('/page/krs.php') ?>">Kelola KRS</a>

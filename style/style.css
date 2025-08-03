@@ -455,6 +455,7 @@ label {
 
 input[type="text"],
 input[type="date"],
+input[type="time"],
 input[type="number"],
 input[type="email"],
 input[type="password"],
@@ -957,6 +958,77 @@ select[readonly] {
   border: transparent;
 }
 
+/* Dashboard Counting */
+.dashboard-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.dashboard-card .icon {
+  margin-bottom: 10px;
+}
+
+.icon-svg {
+  width: 36px;
+  height: 36px;
+  color: #0073e6;
+  /* default color, akan override di tiap card */
+}
+
+.dashboard-card:hover {
+  transform: translateY(-4px);
+}
+
+.dashboard-card .count {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: inherit;
+}
+
+.dashboard-card .label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+}
+
+/* Warna card berdasarkan kategori */
+.card-blue {
+  border-left: 5px solid #0073e6;
+}
+
+.card-green {
+  border-left: 5px solid #4caf50;
+}
+
+.card-orange {
+  border-left: 5px solid #ff9800;
+}
+
+.card-red {
+  border-left: 5px solid #f44336;
+}
+
+/* Warna icon berdasarkan kategori */
+.card-blue .icon-svg {
+  color: #0073e6;
+}
+
+.card-green .icon-svg {
+  color: #4caf50;
+}
+
+.card-orange .icon-svg {
+  color: #ff9800;
+}
+
+.card-red .icon-svg {
+  color: #f44336;
+}
 
 /* Utils */
 .text-center {
