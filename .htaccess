@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# Cek apakah ada file PHP yang sesuai
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^/]+)$ $1.php [L]
+
+# Cek jika direktori ada, biarkan
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Cek jika file ada (HTML, JS, CSS), biarkan
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]

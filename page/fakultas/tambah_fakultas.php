@@ -1,0 +1,31 @@
+<?php $page = "Tambah Fakultas"; ?>
+<?php include("../../layout/header.php"); ?>
+<?php include("../../layout/topbar.php"); ?>
+<?php include("../../layout/sidebar.php"); ?>
+<?php include("../../config/db.php"); ?>
+
+<section id="tambah-fakultas">
+  <div class="row">
+    <div class="col-md-12">
+      <form class="form-container" action="<?= base_url("/action/fakultas/tambah_data.php"); ?>" method="post">
+        <div class="form-group">
+          <label>Nama Fakultas <sup class="text-danger">*</sup></label>
+          <input type="text" id="nama_fakultas" name="nama_fakultas" required>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <button type="submit" class="btn btn-success">Kirim</button>
+            <button type="reset" class="btn btn-danger">Kosongkan</button>
+          </div>
+          <div class="col-md-6">
+            <a href="<?= base_url("/page/fakultas/data_fakultas.php") ?>" class="btn btn-danger float-right">Kembali</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<?php include("../../layout/scripts.php"); ?>
+<?php include("../../layout/footer.php"); ?>
