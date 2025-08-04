@@ -425,6 +425,39 @@ th {
   box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.3);
 }
 
+/* === BADGE PILL STYLE === */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 999px;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+/* Warna-warna badge (pill) */
+.badge-success {
+  background-color: #e6f4ea;
+  color: #2e7d32;
+}
+
+.badge-danger {
+  background-color: #fdecea;
+  color: #c62828;
+}
+
+.badge-warning {
+  background-color: #fff8e1;
+  color: #ef6c00;
+}
+
+.badge-info {
+  background-color: #e3f2fd;
+  color: #1565c0;
+}
+
+
 /* === FORM STYLE === */
 form {
   width: 100%;
