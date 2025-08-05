@@ -1,4 +1,5 @@
 <?php $page = "Dashboard"; ?>
+<?php include("../../config/db.php"); ?>
 <?php include("../../layout/header.php"); ?>
 <?php include("../../layout/topbar.php"); ?>
 <?php include("../../layout/sidebar.php"); ?>
@@ -13,6 +14,12 @@
   <?php unset($_SESSION['alert']); ?>
 <?php endif; ?>
 
+<?php
+$q_count = "SELECT (SELECT COUNT(*) FROM mahasiswa) AS total_mahasiswa, (SELECT COUNT(*) FROM dosen) AS total_dosen, (SELECT COUNT(*) FROM fakultas) AS total_fakultas, (SELECT COUNT(*) FROM prodi) AS total_prodi";
+$sql = mysqli_query($conn, $q_count);
+$data = mysqli_fetch_object($sql);
+?>
+
 <section id="dashboard">
   <div class="row">
     <div class="col-md-3 mb-4">
@@ -23,7 +30,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0v6" />
           </svg>
         </div>
-        <div class="count">120</div>
+        <div class="count"><?= $data->total_mahasiswa; ?></div>
         <div class="label">Mahasiswa</div>
       </div>
     </div>
@@ -36,7 +43,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <div class="count">15</div>
+        <div class="count"><?= $data->total_dosen; ?></div>
         <div class="label">Dosen</div>
       </div>
     </div>
@@ -49,8 +56,8 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16h8M8 12h8M8 8h8M4 6h16v12H4z" />
           </svg>
         </div>
-        <div class="count">30</div>
-        <div class="label">Mata Kuliah</div>
+        <div class="count"><?= $data->total_fakultas; ?></div>
+        <div class="label">Fakultas</div>
       </div>
     </div>
 
@@ -62,8 +69,8 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2a4 4 0 014-4h4" />
           </svg>
         </div>
-        <div class="count">5</div>
-        <div class="label">Kelas Aktif</div>
+        <div class="count"><?= $data->total_prodi; ?></div>
+        <div class="label">Prodi</div>
       </div>
     </div>
   </div>

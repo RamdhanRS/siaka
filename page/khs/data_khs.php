@@ -1,9 +1,9 @@
 <?php $page = "Data Kelola KHS"; ?>
+<?php include("../../config/db.php"); ?>
+<?php include("../../helper/function.php"); ?>
 <?php include("../../layout/header.php"); ?>
 <?php include("../../layout/topbar.php"); ?>
 <?php include("../../layout/sidebar.php"); ?>
-<?php include("../../config/db.php"); ?>
-
 <section id="data-krs">
   <div class="row">
     <!-- <div class="col-md-12 mb-3">
@@ -33,44 +33,20 @@
           </tr>
         </thead>
         <?php
-        $query = "SELECT
-                    m.nim,
-                    m.nama_lengkap as nama_mahasiswa,
-                    f.nama_fakultas,
-                    p.nama_prodi, p.jenjang,
-                    krs.tahun_akademik,
-                    krs.semester,
-                    CASE 
-                      WHEN krs.semester % 2 = 0 THEN 'Genap'
-                      ELSE 'Ganjil'
-                    END AS jenis_semester,
-                    COUNT(DISTINCT mk.id) AS total_mk,
-                    SUM(mk.sks) AS sks_semester,
-                    ROUND(SUM(
-                      CASE 
-                        WHEN khs.nilai_angka >= 85 THEN 4.0 * mk.sks
-                        WHEN khs.nilai_angka >= 75 THEN 3.0 * mk.sks
-                        WHEN khs.nilai_angka >= 65 THEN 2.0 * mk.sks
-                        WHEN khs.nilai_angka >= 50 THEN 1.0 * mk.sks
-                        ELSE 0
-                      END
-                    ) / NULLIF(SUM(mk.sks), 0), 2) AS ips
-                  FROM khs
-                  JOIN krs ON khs.id_krs = krs.id
-                  JOIN mahasiswa m ON krs.id_mahasiswa = m.id
-                  JOIN prodi p ON m.id_prodi = p.id
-                  JOIN fakultas f ON f.id = p.id_fakultas
-                  JOIN jadwal j ON krs.id_jadwal = j.id
-                  JOIN mata_kuliah mk ON j.id_mk = mk.id
-                  WHERE krs.status = 'disetujui'
-                  GROUP BY m.nim, m.nama_lengkap, p.nama_prodi, krs.tahun_akademik, krs.semester
-                  ORDER BY
-                    krs.tahun_akademik DESC,
-                    (CASE WHEN krs.semester % 2 = 0 THEN 0 ELSE 1 END),  -- Genap first
-                    krs.semester DESC, m.nama_lengkap ASC";
+        $per_page = 10;
+        $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+        $start = ($page - 1) * $per_page;
+        $no = $start + 1;;
+
+        // Hitung total data
+        $total_query = mysqli_query($conn, "SELECT COUNT(*) AS total FROM( SELECT m.nim FROM khs JOIN krs ON khs.id_krs = krs.id JOIN mahasiswa m ON krs.id_mahasiswa = m.id JOIN prodi p ON m.id_prodi = p.id JOIN fakultas f ON f.id = p.id_fakultas JOIN jadwal j ON krs.id_jadwal = j.id JOIN mata_kuliah mk ON j.id_mk = mk.id WHERE krs.status = 'disetujui' GROUP BY m.nim, m.nama_lengkap, p.nama_prodi, krs.tahun_akademik, krs.semester) AS grouped_data");
+        $total_data = mysqli_fetch_assoc($total_query)['total'];
+        $total_pages = ceil($total_data / $per_page);
+
+        $query = "SELECT m.nim, m.nama_lengkap as nama_mahasiswa, f.nama_fakultas, p.nama_prodi, p.jenjang, krs.tahun_akademik, krs.semester, CASE WHEN krs.semester % 2 = 0 THEN 'Genap' ELSE 'Ganjil' END AS jenis_semester, COUNT(DISTINCT mk.id) AS total_mk, SUM(mk.sks) AS sks_semester, ROUND(SUM( CASE WHEN khs.nilai_angka >= 85 THEN 4.0 * mk.sks WHEN khs.nilai_angka >= 75 THEN 3.0 * mk.sks WHEN khs.nilai_angka >= 65 THEN 2.0 * mk.sks WHEN khs.nilai_angka >= 50 THEN 1.0 * mk.sks ELSE 0 END) / NULLIF(SUM(mk.sks), 0), 2) AS ips FROM khs JOIN krs ON khs.id_krs = krs.id JOIN mahasiswa m ON krs.id_mahasiswa = m.id JOIN prodi p ON m.id_prodi = p.id JOIN fakultas f ON f.id = p.id_fakultas JOIN jadwal j ON krs.id_jadwal = j.id JOIN mata_kuliah mk ON j.id_mk = mk.id WHERE krs.status = 'disetujui' GROUP BY m.nim, m.nama_lengkap, p.nama_prodi, krs.tahun_akademik, krs.semester ORDER BY krs.tahun_akademik DESC,(CASE WHEN krs.semester % 2 = 0 THEN 0 ELSE 1 END), krs.semester DESC, m.nama_lengkap ASC LIMIT $start, $per_page";
         $sql = mysqli_query($conn, $query);
         $count = mysqli_num_rows($sql);
-        $no = 1;
+        $no = $start + 1;
         ?>
         <tbody id="krs-table-body">
           <?php if ($count > 0) { ?>
@@ -105,6 +81,11 @@
           <?php } ?>
         </tbody>
       </table>
+      <div class="pagination">
+        <div class="pagination">
+          <?= renderPagination($page, $total_pages); ?>
+        </div>
+      </div>
     </div>
   </div>
 </section>

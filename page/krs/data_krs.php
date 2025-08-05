@@ -1,8 +1,9 @@
 <?php $page = "Data Kelola KRS"; ?>
+<?php include("../../config/db.php"); ?>
+<?php include("../../helper/function.php"); ?>
 <?php include("../../layout/header.php"); ?>
 <?php include("../../layout/topbar.php"); ?>
 <?php include("../../layout/sidebar.php"); ?>
-<?php include("../../config/db.php"); ?>
 
 <section id="data-krs">
   <div class="row">
@@ -33,13 +34,20 @@
           </tr>
         </thead>
         <?php
-        $query = "SELECT k.id, 
-                    m.nim, m.nama_lengkap as nama_mahasiswa, 
-                    f.nama_fakultas,
-                    p.nama_prodi, p.jenjang,
-                    j.ruang, j.hari, j.jam_mulai, j.jam_selesai,
-                    mk.kode_mk, mk.nama_mk, mk.sks, mk.semester, 
-                    d.nidn, d.nama_lengkap as nama_dosen, 
+        $per_page = 10;
+        $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+        $start = ($page - 1) * $per_page;
+        $no = $start + 1;;
+
+        // Hitung total data
+        $total_query = mysqli_query($conn, "SELECT COUNT(*) as total FROM krs");
+        $total_data = mysqli_fetch_assoc($total_query)['total'];
+        $total_pages = ceil($total_data / $per_page);
+
+        // Ambil data sesuai page
+        $query = "SELECT k.id, m.nim, m.nama_lengkap as nama_mahasiswa, f.nama_fakultas,
+                    p.nama_prodi, p.jenjang, j.ruang, j.hari, j.jam_mulai, j.jam_selesai,
+                    mk.kode_mk, mk.nama_mk, mk.sks, mk.semester, d.nidn, d.nama_lengkap as nama_dosen,
                     k.status, k.semester as tahun_semester, k.tahun_akademik 
                   FROM krs k
                   LEFT JOIN mahasiswa m ON m.id = k.id_mahasiswa
@@ -47,13 +55,12 @@
                   LEFT JOIN mata_kuliah mk ON mk.id = j.id_mk
                   LEFT JOIN dosen d ON d.id = j.id_dosen
                   LEFT JOIN prodi p ON p.id = mk.id_prodi
-                  LEFT JOIN fakultas f ON f.id = p.id_fakultas";
+                  LEFT JOIN fakultas f ON f.id = p.id_fakultas
+                  LIMIT $start, $per_page";
         $sql = mysqli_query($conn, $query);
-        $count = mysqli_num_rows($sql);
-        $no = 1;
         ?>
         <tbody id="krs-table-body">
-          <?php if ($count > 0) { ?>
+          <?php if ($total_data > 0) { ?>
             <?php while ($data = mysqli_fetch_array($sql)) { ?>
               <tr>
                 <td><?= $no++; ?></td>
@@ -112,6 +119,11 @@
           <?php } ?>
         </tbody>
       </table>
+      <div class="pagination">
+        <div class="pagination">
+          <?= renderPagination($page, $total_pages); ?>
+        </div>
+      </div>
     </div>
   </div>
 </section>

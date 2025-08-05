@@ -52,10 +52,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
       <li class="menu-item <?= strpos($currentPage, 'khs') !== false ? 'active' : '' ?>">
         <a href="<?= base_url('/page/khs/data_khs.php') ?>">Kelola KHS</a>
       </li>
-      <li class="menu-item <?= strpos($currentPage, 'laporan') !== false ? 'active' : '' ?>">
-        <a href="<?= base_url('/page/laporan.php') ?>">Laporan Akademik</a>
-      </li>
-
     </ul>
   </aside>
 
