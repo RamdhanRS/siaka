@@ -47,7 +47,7 @@
                   LEFT JOIN mata_kuliah mk ON mk.id = j.id_mk
                   LEFT JOIN dosen d ON d.id = j.id_dosen
                   LEFT JOIN prodi p ON p.id = mk.id_prodi
-                  LEFT JOIN fakultas f ON f.id = p.id_fakultas;";
+                  LEFT JOIN fakultas f ON f.id = p.id_fakultas";
         $sql = mysqli_query($conn, $query);
         $count = mysqli_num_rows($sql);
         $no = 1;
@@ -72,7 +72,7 @@
                   <?= $data["jenjang"]; ?> - <?= $data["nama_prodi"]; ?>
                 </td>
                 <td>
-                  Semester <?= $data["tahun_semester"] == 1 ? "Ganjil" : "Genap"; ?> <br>
+                  Semester <?= $data["tahun_semester"] % 2 == 0 ? "Genap" : "Ganjil"; ?> <br>
                   Tahun <?= $data["tahun_akademik"] ?>
                 </td>
                 <td>

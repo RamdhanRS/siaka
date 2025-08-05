@@ -1063,6 +1063,91 @@ select[readonly] {
   color: #f44336;
 }
 
+/* Detail Box */
+.card-detail {
+  background-color: #ffffff;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  max-width: 100%;
+  margin-bottom: 24px;
+}
+
+.card-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0073e6;
+  margin: 0px 0px 25px 0px;
+}
+
+.grid-detail {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px 32px;
+}
+
+.detail-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 13px;
+  color: #888;
+  font-weight: 600;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #222;
+}
+
+.card-actions {
+  margin-top: 32px;
+  display: flex;
+  gap: 12px;
+}
+
+/* STATISTIK */
+.statistik-box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px 30px;
+  color: white;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.statistik-item {
+  text-align: center;
+  flex: 1;
+}
+
+.statistik-item .label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.statistik-item .value {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.divider {
+  width: 1px;
+  height: 45px;
+  background-color: #888;
+  margin: 0 20px;
+}
+
 /* Utils */
 .text-center {
   text-align: center !important;

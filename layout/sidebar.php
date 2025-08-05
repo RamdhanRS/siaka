@@ -50,7 +50,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         <a href="<?= base_url('/page/krs/data_krs.php') ?>">Kelola KRS</a>
       </li>
       <li class="menu-item <?= strpos($currentPage, 'khs') !== false ? 'active' : '' ?>">
-        <a href="<?= base_url('/page/khs.php') ?>">Kelola KHS</a>
+        <a href="<?= base_url('/page/khs/data_khs.php') ?>">Kelola KHS</a>
       </li>
       <li class="menu-item <?= strpos($currentPage, 'laporan') !== false ? 'active' : '' ?>">
         <a href="<?= base_url('/page/laporan.php') ?>">Laporan Akademik</a>
