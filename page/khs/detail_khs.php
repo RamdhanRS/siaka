@@ -93,7 +93,7 @@ if ($nim && $tahun_akademik && $semester) {
   $data_count = mysqli_fetch_object($sql_count);
 
   $query_detail = "SELECT 
-                    m.nim, m.nama_lengkap as nama_mahasiswa, m.jenis_kelamin, m.tanggal_lahir, m.angkatan, m.no_telp,
+                    m.nim, m.nama_lengkap as nama_mahasiswa, m.jenis_kelamin, m.tanggal_lahir, m.angkatan, m.no_telp, m.status_mahasiswa as status,
                     f.nama_fakultas,
                     p.nama_prodi, p.jenjang,
                     mk.kode_mk,
@@ -158,7 +158,35 @@ if ($nim && $tahun_akademik && $semester) {
           </div>
           <div class="detail-block">
             <span class="label">Status</span>
-            <div class="value"><span class="badge badge-success">Aktif</span></div>
+            <div class="value">
+              <?php
+              function getBadgeClass($status)
+              {
+                switch ($status) {
+                  case 'aktif':
+                    return 'badge-success';
+                  case 'cuti':
+                    return 'badge-warning';
+                  case 'lulus':
+                    return 'badge-info';
+                  case 'nonaktif':
+                  case 'dropout':
+                  case 'mengundurkan_diri':
+                    return 'badge-danger';
+                  case 'pindah':
+                    return 'badge-info';
+                  default:
+                    return 'badge-info';
+                }
+              }
+              ?>
+
+              <div class="value">
+                <span class="badge <?= getBadgeClass($detail->status); ?>">
+                  <?= ucwords(str_replace('_', ' ', $detail->status)); ?>
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -192,7 +220,9 @@ if ($nim && $tahun_akademik && $semester) {
             <th>Nilai Angka</th>
             <th>Nilai Huruf</th>
             <th>Dosen</th>
-            <th class="text-center">Aksi</th>
+            <?php if ($detail->status == "aktif") { ?>
+              <th class="text-center">Aksi</th>
+            <?php } ?>
           </tr>
         </thead>
         <tbody>
@@ -206,9 +236,11 @@ if ($nim && $tahun_akademik && $semester) {
                 <td><?= $data["nilai_angka"]; ?></td>
                 <td><?= $data["nilai_huruf"]; ?></td>
                 <td><?= $data["dosen"] ?></td>
-                <td class="text-center">
-                  <a href="<?= base_url("/page/khs/edit_khs.php") . "?id= " . $data["id"] ?>" class="btn btn-warning">Edit</a>
-                </td>
+                <?php if ($detail->status == "aktif") { ?>
+                  <td class="text-center">
+                    <a href="<?= base_url("/page/khs/edit_khs.php") . "?id= " . $data["id"] ?>" class="btn btn-warning">Edit</a>
+                  </td>
+                <?php } ?>
               </tr>
             <?php } ?>
           <?php } else { ?>
