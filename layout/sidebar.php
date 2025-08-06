@@ -11,11 +11,11 @@ $currentPage = basename($_SERVER['PHP_SELF']);
       </li>
 
       <!-- Kelola User -->
-      <li class="menu-item has-submenu <?= preg_match('/data_(admin|dosen|mahasiswa)\.php$/', $currentPage) ? 'open' : '' ?>">
+      <li class="menu-item has-submenu <?= preg_match('/_(admin|dosen|mahasiswa)\.php$/', $currentPage) ? 'open' : '' ?>">
         Kelola User <span class="arrow"></span>
       </li>
-      <ul class="submenu <?= preg_match('/data_(admin|dosen|mahasiswa)\.php$/', $currentPage) ? 'open' : '' ?>">
-        <li class="<?= strpos($currentPage, 'data_admin') !== false ? 'active' : '' ?>">
+      <ul class="submenu <?= preg_match('/_(admin|dosen|mahasiswa)\.php$/', $currentPage) ? 'open' : '' ?>">
+        <li class="<?= strpos($currentPage, 'data_admin') !== false || strpos($currentPage, 'tambah_admin') !== false || strpos($currentPage, 'edit_admin') !== false ? 'active' : '' ?>">
           <a href="<?= base_url('/page/user/data_admin.php') ?>">Data Admin</a>
         </li>
         <li class="<?= strpos($currentPage, 'data_dosen') !== false || strpos($currentPage, 'tambah_dosen') !== false || strpos($currentPage, 'edit_dosen') !== false ? 'active' : '' ?>">

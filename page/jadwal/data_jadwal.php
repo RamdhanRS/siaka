@@ -56,7 +56,7 @@
                 </td>
                 <td class="text-center">
                   <a href="<?= base_url("/page/jadwal/edit_jadwal.php") . "?id=" . $data["id"]; ?>" class="btn btn-warning">Edit</a>
-                  <a href="<?= base_url("/action/jadwal/hapus_data.php") . "?id=" . $data["id"]; ?>" class="btn btn-danger">Hapus</a>
+                  <a href="<?= base_url("/action/jadwal/hapus_data.php") . "?id=" . $data["id"]; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" class="btn btn-danger">Hapus</a>
                 </td>
               </tr>
             <?php } ?>

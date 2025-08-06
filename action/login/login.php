@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             'type' => 'error',
             'message' => 'Role tidak dikenali.'
           ];
-          header('Location: ' . base_url("/index.php"));
+          header('Location: ' . base_url("/"));
       }
       exit;
     } else {
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         'type' => 'error',
         'message' => 'Password salah.'
       ];
-      header('Location: ' . base_url("/index.php"));
+      header('Location: ' . base_url("/"));
       exit;
     }
   } else {
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       'type' => 'error',
       'message' => 'Username tidak ditemukan.'
     ];
-    header('Location: ' . base_url("/index.php"));
+    header('Location: ' . base_url("/"));
     exit;
   }
 }

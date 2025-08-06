@@ -47,7 +47,7 @@ $data = mysqli_fetch_object($sql);
 
         <div class="row">
           <div class="col-md-6">
-            <button type="submit" class="btn btn-success">Kirim</button>
+            <button type="submit" class="btn btn-success">Perbarui</button>
           </div>
           <div class="col-md-6">
             <a href="<?= base_url("/page/khs/detail_khs.php") . "?nim=" . urlencode($data->nim) . "&tahun_akademik=" . urlencode($data->tahun_akademik) . "&semester=" . urlencode($data->semester) ?>" class="btn btn-danger float-right">Kembali</a>

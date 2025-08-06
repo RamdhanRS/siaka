@@ -1,8 +1,8 @@
 <?php $page = "Tambah Dosen"; ?>
+<?php include("../../config/db.php"); ?>
 <?php include("../../layout/header.php"); ?>
 <?php include("../../layout/topbar.php"); ?>
 <?php include("../../layout/sidebar.php"); ?>
-<?php include("../../config/db.php"); ?>
 
 <section id="tambah-dosen">
   <div class="row">
@@ -40,7 +40,7 @@
 
         <div class="row">
           <div class="col-md-6">
-            <button type="submit" class="btn btn-success">Kirim</button>
+            <button type="submit" class="btn btn-success">Simpan</button>
             <button type="reset" class="btn btn-danger">Kosongkan</button>
           </div>
           <div class="col-md-6">

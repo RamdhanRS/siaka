@@ -52,7 +52,7 @@ $semester = [1, 2, 3, 4, 5, 6, 7, 8];
 
         <div class="row">
           <div class="col-md-6">
-            <button type="submit" class="btn btn-success">Kirim</button>
+            <button type="submit" class="btn btn-success">Simpan</button>
             <button type="reset" class="btn btn-danger">Kosongkan</button>
           </div>
           <div class="col-md-6">

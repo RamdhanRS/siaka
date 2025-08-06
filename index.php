@@ -1,6 +1,22 @@
 <?php
 session_start();
 include_once __DIR__ . '/config/config.php';
+if (isset($_SESSION["role"]) && !empty($_SESSION["role"])) {
+  switch ($_SESSION['role']) {
+    case 'admin':
+      header('Location: ' . base_url("/page/dashboard/dashboard_admin.php"));
+      exit;
+    case 'dosen':
+      header('Location: ' . base_url("/page/dashboard/dashboard_dosen.php"));
+      exit;
+    case 'mahasiswa':
+      header('Location: ' . base_url("/page/dashboard/dashboard_mahasiswa.php"));
+      exit;
+    default:
+      exit;
+  }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="id">

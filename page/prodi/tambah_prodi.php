@@ -41,7 +41,7 @@ $jenjang = ['D3', 'D4', 'S1', 'S2', 'S3'];
 
         <div class="row">
           <div class="col-md-6">
-            <button type="submit" class="btn btn-success">Kirim</button>
+            <button type="submit" class="btn btn-success">Simpan</button>
             <button type="reset" class="btn btn-danger">Kosongkan</button>
           </div>
           <div class="col-md-6">

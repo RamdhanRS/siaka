@@ -24,7 +24,6 @@ $data = mysqli_fetch_object($sql);
         <div class="row">
           <div class="col-md-6">
             <button type="submit" class="btn btn-success">Kirim</button>
-            <button type="reset" class="btn btn-danger">Kosongkan</button>
           </div>
           <div class="col-md-6">
             <a href="<?= base_url("/page/fakultas/data_fakultas.php") ?>" class="btn btn-danger float-right">Kembali</a>

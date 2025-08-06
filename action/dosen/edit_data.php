@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $resultUser = mysqli_query($conn, $queryUser);
 
     if (!$resultUser) {
-      throw new Exception("Gagal update ke tabel users: " . mysqli_error($conn));
+      throw new Exception("Gagal update users: " . mysqli_error($conn));
     }
 
     // Update tabel dosen
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $resultDosen = mysqli_query($conn, $queryDosen);
 
     if (!$resultDosen) {
-      throw new Exception("Gagal update ke tabel dosen: " . mysqli_error($conn));
+      throw new Exception("Gagal update dosen: " . mysqli_error($conn));
     }
 
     $_SESSION['alert'] = [

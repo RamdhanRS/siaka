@@ -10,5 +10,5 @@ $_SESSION['alert'] = [
   'message' => 'Anda telah berhasil logout.'
 ];
 
-header('Location: ' . base_url("/index.php"));
+header('Location: ' . base_url("/"));
 exit;

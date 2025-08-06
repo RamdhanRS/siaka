@@ -48,8 +48,7 @@ $jenjang = ['D3', 'D4', 'S1', 'S2', 'S3'];
 
         <div class="row">
           <div class="col-md-6">
-            <button type="submit" class="btn btn-success">Kirim</button>
-            <button type="reset" class="btn btn-danger">Kosongkan</button>
+            <button type="submit" class="btn btn-success">Perbarui</button>
           </div>
           <div class="col-md-6">
             <a href="<?= base_url("/page/prodi/data_prodi.php") ?>" class="btn btn-danger float-right">Kembali</a>

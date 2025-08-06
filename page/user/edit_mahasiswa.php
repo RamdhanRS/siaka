@@ -1,8 +1,8 @@
 <?php $page = "Edit Mahasiswa"; ?>
+<?php include("../../config/db.php"); ?>
 <?php include("../../layout/header.php"); ?>
 <?php include("../../layout/topbar.php"); ?>
 <?php include("../../layout/sidebar.php"); ?>
-<?php include("../../config/db.php"); ?>
 
 <?php
 $nim = isset($_GET['nim']) ? $_GET['nim'] : null;
@@ -80,8 +80,7 @@ $sql_prodi = mysqli_query($conn, $query_prodi);
 
         <div class="row">
           <div class="col-md-6">
-            <button type="submit" class="btn btn-success">Kirim</button>
-            <button type="reset" class="btn btn-danger">Kosongkan</button>
+            <button type="submit" class="btn btn-success">Perbarui</button>
           </div>
           <div class="col-md-6">
             <a href="<?= base_url("/page/user/data_mahasiswa.php") ?>" class="btn btn-danger float-right">Kembali</a>

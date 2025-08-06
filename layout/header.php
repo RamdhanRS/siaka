@@ -2,7 +2,11 @@
 <?php
 session_start();
 if (!isset($_SESSION['user_id'])) {
-  header('Location: ' . base_url("/index.php") . "?error=Harap login dahulu");
+  $_SESSION['alert'] = [
+    'type' => 'error',
+    'message' => 'Harap login dahulu!'
+  ];
+  header('Location: ' . base_url("/"));
   exit;
 }
 ?>

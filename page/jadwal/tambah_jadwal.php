@@ -70,7 +70,7 @@ $hari = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
 
         <div class="row">
           <div class="col-md-6">
-            <button type="submit" class="btn btn-success">Kirim</button>
+            <button type="submit" class="btn btn-success">Simpan</button>
             <button type="reset" class="btn btn-danger">Kosongkan</button>
           </div>
           <div class="col-md-6">

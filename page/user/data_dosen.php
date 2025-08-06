@@ -1,8 +1,8 @@
 <?php $page = "Data Dosen"; ?>
+<?php include("../../config/db.php"); ?>
 <?php include("../../layout/header.php"); ?>
 <?php include("../../layout/topbar.php"); ?>
 <?php include("../../layout/sidebar.php"); ?>
-<?php include("../../config/db.php"); ?>
 
 <section id="data-dosen">
   <div class="row">
@@ -47,7 +47,7 @@
                 <td><?= $data["alamat"]; ?></td>
                 <td class="text-center">
                   <a href="<?= base_url("/page/user/edit_dosen.php") . "?nidn=" . $data["nidn"]; ?>" class="btn btn-warning">Edit</a>
-                  <a href="<?= base_url("/action/dosen/hapus_data.php") . "?nidn=" . $data["nidn"]; ?>" class="btn btn-danger">Hapus</a>
+                  <a href="<?= base_url("/action/dosen/hapus_data.php") . "?nidn=" . $data["nidn"]; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" class="btn btn-danger">Hapus</a>
                 </td>
               </tr>
             <?php } ?>
