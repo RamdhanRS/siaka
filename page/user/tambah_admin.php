@@ -9,6 +9,11 @@
     <div class="col-md-12">
       <form class="form-container" action="<?= base_url("/action/admin/tambah_admin.php"); ?>" method="post">
         <div class="form-group">
+          <label>Nama Lengkap <sup class="text-danger">*</sup></label>
+          <input type="text" id="nama_lengkap" name="nama_lengkap" required>
+        </div>
+
+        <div class="form-group">
           <label>Username <sup class="text-danger">*</sup></label>
           <input type="text" id="username" name="username" required>
         </div>
@@ -16,6 +21,11 @@
         <div class="form-group">
           <label>Email <sup class="text-danger">*</sup></label>
           <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label>No Hp <sup class="text-danger">*</sup></label>
+          <input type="number" min="1" id="no_telp" name="no_telp" required>
         </div>
 
         <div class="form-group">

@@ -7,7 +7,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $username = mysqli_real_escape_string($conn, $_POST['username']);
   $password = $_POST['password'];
 
-  $query = "SELECT * FROM users WHERE username = '$username' LIMIT 1";
+  $query = "SELECT u.id, CASE 
+              WHEN u.role = 'mahasiswa' THEN m.nama_lengkap
+              WHEN u.role = 'dosen' THEN d.nama_lengkap
+              WHEN u.role = 'admin' THEN a.nama_lengkap
+              ELSE NULL
+            END AS username, u.password, u.role
+            FROM users u
+            LEFT JOIN mahasiswa m ON m.user_id = u.id 
+            LEFT JOIN dosen d ON d.user_id = u.id
+            LEFT JOIN admins a ON a.user_id = u.id
+            WHERE username = '$username' LIMIT 1";
   $result = mysqli_query($conn, $query);
 
   if ($user = mysqli_fetch_assoc($result)) {

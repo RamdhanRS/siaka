@@ -30,7 +30,7 @@
 
         <div class="form-group">
           <label>No Hp <sup class="text-danger">*</sup></label>
-          <input type="number" id="no_telp" name="no_telp" required>
+          <input type="number" min="1" id="no_telp" name="no_telp" required>
         </div>
 
         <div class="form-group">
